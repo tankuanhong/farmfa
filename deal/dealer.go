@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/hashicorp/vault/shamir"
 	"github.com/pquerna/otp/totp"
 
 	"github.com/borgoat/farmfa/api"
 	"github.com/borgoat/farmfa/ptr"
 	"github.com/borgoat/farmfa/random"
+	"github.com/borgoat/farmfa/shamir"
 )
 
 // ErrInvalidTOTPSecret is returned when testing the given secret against the TOTP algorithm unsuccessfully

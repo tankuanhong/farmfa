@@ -14,7 +14,7 @@ import (
 	"filippo.io/age/armor"
 	"github.com/borgoat/farmfa/api"
 	"github.com/borgoat/farmfa/random"
-	"github.com/hashicorp/vault/shamir"
+	"github.com/borgoat/farmfa/shamir"
 	"github.com/pquerna/otp/totp"
 )
 

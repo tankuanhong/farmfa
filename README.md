@@ -22,6 +22,8 @@ First, we apply the *Shamir’s Secret Sharing* scheme ([Shamir 1979](https://do
 
 Additionally, farMFA implements a workflow to reassemble the TOTP secret on a server, allowing users to access only the generated TOTP code without risking accidental leaks of the secret.
 
+![a desk with a six-digit combination lock on it, a clock, and pieces of papers with random ASCII strings on them](./docs/banner.png)
+
 ## Getting Started
 
 The two main workflows are:
@@ -30,6 +32,8 @@ The two main workflows are:
 2. Combining the shares (Tocs) and generating the TOTP. This is done by the server/oracle.
 
 ### Split TOTP Secret and Share
+
+![a diagram of the initial phase where TOTP secrets are split](docs/split.png)
 
 During this phase, farMFA encrypts the Tocs based on the intended recipient (player). The current encryption strategy uses [age](https://filippo.io/age).
 
@@ -75,6 +79,8 @@ age -i player_1.txt --decrypt
 Players must store their Toc securely.
 
 ### Generate a TOTP
+
+![a diagram showing the TOTP code generation phase](docs/generate.png)
 
 When a user wants to log in, they start a session. The user initiating the login is called the applicant.
 

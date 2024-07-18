@@ -6,7 +6,27 @@
 ![Go Report Card](https://goreportcard.com/badge/github.com/borgoat/farmfa)  
 ![PkgGoDev](https://pkg.go.dev/badge/github.com/borgoat/farmfa)
 
-## Concept
+### 🚧 DISCLAIMER 🚧
+
+**WIP! farMFA is still in development and may not be suitable for production use.**
+
+![under contruction GIF from the 90s](docs/wip.gif)
+
+The user experience is terrible, the code is not tested, and the documentation is incomplete.
+
+It's here for [Umarells](https://en.wikipedia.org/wiki/Umarell) as myself, who like to take a look at half-baked projects.
+
+I believe you can trust the decryption to work in the future, as it's based on the [age](https://filippo.io/age) encryption tool.
+So it's unlikely that your secrets will be lost or leaked.
+
+You may also trust the Shamir's Secret Sharing implementation, as it's coming from the HashiCorp [Vault](https://github.com/hashicorp/vault) project.
+
+However, if you do feel like using this tool right now, please keep a copy of the code and the encrypted secrets in a safe place.
+
+
+## 💡 Concept
+
+![a desk with a six-digit combination lock on it, a clock, and pieces of papers with random ASCII strings on them](./docs/banner.png)
 
 Multi-Factor Authentication (MFA) is often implemented using the TOTP standard ([RFC6238](https://www.rfc-editor.org/info/rfc6238)) from OATH.
 
@@ -22,9 +42,8 @@ First, we apply the *Shamir’s Secret Sharing* scheme ([Shamir 1979](https://do
 
 Additionally, farMFA implements a workflow to reassemble the TOTP secret on a server, allowing users to access only the generated TOTP code without risking accidental leaks of the secret.
 
-![a desk with a six-digit combination lock on it, a clock, and pieces of papers with random ASCII strings on them](./docs/banner.png)
 
-## Getting Started
+## 🚀 Getting Started
 
 The two main workflows are:
 
@@ -132,11 +151,11 @@ http --body POST localhost:8080/sessions/V5K6QD4XUFLRGCZH/totp kek="MIotBtYOWrXn
 }
 ```
 
-## References
+## 📖 References
 - [RFC6238](https://www.rfc-editor.org/info/rfc6238): M’Raihi, D., Machani, S., Pei, M., and J. Rydell, "TOTP: Time-Based One-Time Password Algorithm", RFC 6238, DOI 10.17487/RFC6238, May 2011.
 - [Shamir's Secret Sharing](https://doi.org/10.1145/359168.359176): Adi Shamir. 1979. "How to share a secret". Commun. ACM 22, 11 (Nov. 1979), 612–613.
 
-## Glossary
+## 🔠 Glossary
 - **Secret:** A TOTP is a hash generated from a secret. This secret is usually shown as a QR code and shared between the prover and verifier. In farMFA, the prover is distributed among recipients who share the key material and an oracle that generates the TOTP.
 - **Toc:** The "pieces" in which a TOTP secret gets split.
 - **Deal:** The workflow in which a dealer splits a secret into Tocs and shares them with multiple players.

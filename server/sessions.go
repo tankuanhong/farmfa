@@ -16,7 +16,7 @@ func (s *Server) CreateSession(ctx echo.Context) error {
 
 	if err := ctx.Bind(&req); err != nil {
 		// TODO Better error handling
-		return ctx.JSON(http.StatusBadRequest, api.DefaultError{})
+		return echo.NewHTTPError(http.StatusBadRequest, "failed to parse request")
 	}
 
 	resp, err = s.oracle.CreateSession(&req.TocZero)
@@ -37,7 +37,7 @@ func (s *Server) GetSession(ctx echo.Context, id string) error {
 	resp, err = s.oracle.GetSession(id)
 	if err != nil {
 		// TODO Better error handling
-		return ctx.JSON(http.StatusInternalServerError, api.DefaultError{})
+		return echo.NewHTTPError(http.StatusNotFound, "session not found")
 	}
 
 	return ctx.JSON(http.StatusOK, resp)
@@ -51,13 +51,13 @@ func (s *Server) PostToc(ctx echo.Context, id string) error {
 
 	if err := ctx.Bind(&req); err != nil {
 		// TODO Better error handling
-		return ctx.JSON(http.StatusBadRequest, api.DefaultError{})
+		return echo.NewHTTPError(http.StatusBadRequest, "failed to parse request")
 	}
 
 	err = s.oracle.AddToc(id, req.EncryptedToc)
 	if err != nil {
 		// TODO Better error handling
-		return ctx.JSON(http.StatusInternalServerError, api.DefaultError{})
+		return echo.NewHTTPError(http.StatusInternalServerError, "failed to add Toc")
 	}
 
 	return ctx.NoContent(http.StatusOK)
@@ -72,7 +72,7 @@ func (s *Server) GenerateTotp(ctx echo.Context, id string) error {
 
 	if err = ctx.Bind(&req); err != nil {
 		// TODO Better error handling
-		return ctx.JSON(http.StatusBadRequest, api.DefaultError{})
+		return echo.NewHTTPError(http.StatusBadRequest, "failed to parse request")
 	}
 
 	//sess, err := s.oracle.GetSession(id)
@@ -90,7 +90,7 @@ func (s *Server) GenerateTotp(ctx echo.Context, id string) error {
 	totp, err := s.oracle.GenerateTOTP(id, &kek)
 	if err != nil {
 		// TODO Better error handling
-		return ctx.JSON(http.StatusInternalServerError, api.DefaultError{})
+		return echo.NewHTTPError(http.StatusInternalServerError, "failed to generate TOTP")
 	}
 
 	resp.Totp = totp

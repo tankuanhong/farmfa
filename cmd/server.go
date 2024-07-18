@@ -6,8 +6,9 @@ import (
 	"github.com/borgoat/farmfa/api"
 	"github.com/borgoat/farmfa/server"
 	"github.com/borgoat/farmfa/session"
-	"github.com/deepmap/oapi-codegen/pkg/middleware"
+
 	"github.com/labstack/echo/v4"
+	"github.com/oapi-codegen/echo-middleware"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -21,7 +22,7 @@ func serverCmd(v *viper.Viper) *cobra.Command {
 		if err != nil {
 			return fmt.Errorf("error loading OpenAPI spec: %w", err)
 		}
-		e.Use(middleware.OapiRequestValidator(apiObj))
+		e.Use(echomiddleware.OapiRequestValidator(apiObj))
 
 		store := session.NewInMemoryStore()
 		oracle := session.NewOracle(store)

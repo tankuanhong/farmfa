@@ -5,17 +5,17 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/borgoat/farmfa/api"
+	"github.com/borgoat/farmfa/server"
+	"github.com/borgoat/farmfa/session"
+
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/config"
 	ddb "github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/awslabs/aws-lambda-go-api-proxy/echo"
-	"github.com/deepmap/oapi-codegen/pkg/middleware"
 	"github.com/labstack/echo/v4"
-
-	"github.com/borgoat/farmfa/api"
-	"github.com/borgoat/farmfa/server"
-	"github.com/borgoat/farmfa/session"
+	"github.com/oapi-codegen/echo-middleware"
 )
 
 var echoLambda = func() *echoadapter.EchoLambdaV2 {
@@ -24,7 +24,7 @@ var echoLambda = func() *echoadapter.EchoLambdaV2 {
 	if err != nil {
 		panic(fmt.Errorf("error loading OpenAPI spec: %w", err))
 	}
-	e.Use(middleware.OapiRequestValidator(apiObj))
+	e.Use(echomiddleware.OapiRequestValidator(apiObj))
 
 	cfg, err := config.LoadDefaultConfig(context.TODO())
 	if err != nil {

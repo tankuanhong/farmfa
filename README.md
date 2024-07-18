@@ -74,9 +74,9 @@ The dealer starts the process, usually providing their own age public key and ke
 ```shell
 farmfa dealer \
   --totp-secret HXDMVJECJJWSRB3HWIZR4IFUGFTMXBOZ \
-  -p player_1=age17tpq2z00asnnc0w6mpn59ygej9chfqhhexfw5rdl4j838pzkfv8s8yg97c \
-  -p player_2=age1h7lxfhnm54knla7jnc4wf3h5lkpew9ef6mcy66qckxywwtt4uq9s5rd99m \
-  -p player_3=age1rq6hyc8tsht8rsdjfzaedzmhwcxjeps6ve9nrdljk3t34h0gxpastw62qp
+  -p player_1=age1ct885ya9458q63ea6fdl42ajl3rpkasj45c5hkkp5ccpf7c80cssk688fr \
+  -p player_2=age1emv0n3j90658ke68ktrl7ne9w5gqwrcuetww5ac5rhdkeg638ykqg7uuhd \
+  -p player_3=age1rl2ranstxv2dd8pmamvwukz35zrcv9p3knthp0kal3q47gyyea5qk0cl4q
 ```
 
 This generates encrypted Tocs, one per player. Each player then decrypts and inspects their Toc using the age CLI:

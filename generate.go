@@ -1,3 +1,3 @@
 package main
 
-//go:generate go run github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest -config api/config.yaml api/farmfa.yaml
+//go:generate go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest -config api/config.yaml api/farmfa.yaml

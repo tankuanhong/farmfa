@@ -20,10 +20,11 @@ require (
 	github.com/aws/constructs-go/constructs/v10 v10.1.33
 	github.com/aws/jsii-runtime-go v1.60.1
 	github.com/awslabs/aws-lambda-go-api-proxy v0.13.3
-	github.com/deepmap/oapi-codegen v1.16.3
 	github.com/getkin/kin-openapi v0.126.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/labstack/echo/v4 v4.12.0
+	github.com/oapi-codegen/echo-middleware v1.0.2
+	github.com/oapi-codegen/oapi-codegen/v2 v2.3.0
 	github.com/oapi-codegen/runtime v1.1.1
 	github.com/pquerna/otp v1.4.0
 	github.com/spf13/cobra v1.8.1

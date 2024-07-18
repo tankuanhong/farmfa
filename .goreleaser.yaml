@@ -16,31 +16,31 @@ builds:
       - linux
       - windows
       - darwin
-  - id: libfarmfa
-    dir: libfarmfa
-    binary: libfarmfa
-    env:
-      - CGO_ENABLED=1
-    goos:
-      - darwin
-      - android
-    goarch:
-      - arm
-      - arm64
-    goarm:
-      - 7
-    buildmode: c-shared
-    ldflags: -s -w
-    overrides:
-      - goos: android
-        goarch: arm
-        goarm: 7
-        env:
-          - CC=armv7a-linux-androideabi33-clang
-      - goos: android
-        goarch: arm64
-        env:
-          - CC=aarch64-linux-android33-clang
+#  - id: libfarmfa
+#    dir: libfarmfa
+#    binary: libfarmfa
+#    env:
+#      - CGO_ENABLED=1
+#    goos:
+#      - darwin
+#      - android
+#    goarch:
+#      - arm
+#      - arm64
+#    goarm:
+#      - 7
+#    buildmode: c-shared
+#    ldflags: -s -w
+#    overrides:
+#      - goos: android
+#        goarch: arm
+#        goarm: 7
+#        env:
+#          - CC=armv7a-linux-androideabi33-clang
+#      - goos: android
+#        goarch: arm64
+#        env:
+#          - CC=aarch64-linux-android33-clang
 archives:
   - id: cli
     builds:
@@ -56,20 +56,20 @@ archives:
     format_overrides:
       - goos: windows
         format: zip
-  - id: lib
-    builds:
-      - libfarmfa
-    format: tar.gz
-    name_template: >-
-      {{ .ProjectName }}_libfarmfa_
-      {{- title .Os }}_
-      {{- if eq .Arch "amd64" }}x86_64
-      {{- else if eq .Arch "386" }}i386
-      {{- else }}{{ .Arch }}{{ end }}
-      {{- if .Arm }}v{{ .Arm }}{{ end }}
-    format_overrides:
-      - goos: windows
-        format: zip
+#  - id: lib
+#    builds:
+#      - libfarmfa
+#    format: tar.gz
+#    name_template: >-
+#      {{ .ProjectName }}_libfarmfa_
+#      {{- title .Os }}_
+#      {{- if eq .Arch "amd64" }}x86_64
+#      {{- else if eq .Arch "386" }}i386
+#      {{- else }}{{ .Arch }}{{ end }}
+#      {{- if .Arm }}v{{ .Arm }}{{ end }}
+#    format_overrides:
+#      - goos: windows
+#        format: zip
 
 changelog:
   sort: asc
